@@ -8,8 +8,6 @@ function initialize {
     sudo apt update
     sudo apt install -y curl
     sudo apt install -y git
-    git config --global user.email 'harrytran103@gmail.com'
-    git config --global user.name 'Harry Tran'
 
 }
 
@@ -41,8 +39,8 @@ function config_dotfiles {
     
     rm ~/.zshrc
     rm ~/.bash_profile
-    curl https://raw.githubusercontent.com/harrytran103/dotfiles-for-linux/main/.zshrc --output .zshrc
-    curl https://raw.githubusercontent.com/harrytran103/dotfiles-for-linux/main/.bash_profile --output .bash_profile
+    curl https://raw.githubusercontent.com/harrytran103/dotohmypet/main/.zshrc --output .zshrc
+    curl https://raw.githubusercontent.com/harrytran103/dotohmypet/main/.bash_profile --output .bash_profile
     cp .zshrc ~/.zshrc
     cp .bash_profile ~/.bash_profile
 
@@ -74,23 +72,6 @@ function install_environments {
     sudo mkdir -p /usr/local/n
     sudo chown -R $(whoami) /usr/local/n
     sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
-    
-    # Install Python3
-    sudo apt update
-    sudo apt install software-properties-common
-    sudo add-apt-repository ppa:deadsnakes/ppa
-    sudo apt update
-    sudo apt install python3.8
-
-    # Install Go
-    sudo apt install golang
-    echo 'export GOPATH=$HOME/go' >> ~/.zshrc
-    echo 'export PATH=${PATH}:${GOPATH}/bin' >> ~/.zshrc 
-    source ~/.zshrc 
-
-    # Install Pip3
-    sudo apt update
-    sudo apt install python3-pip
 
     # Install Docker
     sudo apt update
@@ -114,33 +95,14 @@ function install_applications {
 
     echo "📱 Installing applications..."
 
-    # Install Elementary Tweaks
-    sudo add-apt-repository ppa:philip.scott/elementary-tweaks
-    sudo apt install -y elementary-tweaks
-
     # Install snap
     sudo apt install -y snapd
-
-    # Install Sublime Text 3
-    sudo snap install sublime-text --classic
 
     # Install Visual Studio Code
     sudo snap install code --classic
 
-    # Install kubectl
-    snap install kubectl --classic    
-
-    # Install k9s
-    snap install k9s --edge --devmode
-
-    # Install helm
-    sudo snap install helm --classic
-
     # Install Postman
     sudo snap install postman
-    
-    # Install DBeaver
-    sudo snap install dbeaver-ce
     
     # Install WebStorm
     sudo snap install webstorm --classic
@@ -148,17 +110,11 @@ function install_applications {
     # Install DataGrip
     sudo snap install datagrip --classic
 
-    # Install PyCharm
-    sudo snap install pycharm-professional --classic
-
-    # Install GoLand
-    sudo snap install goland --classic
-
 }
 
 function restart {
     
-    sudo shutdown -r +7 "Elementary OS will 😴 restart in 7 minutes. Please 🛡️ save your work."
+    sudo shutdown -r +7 "Linux OS will 😴 restart in 7 minutes. Please 🛡️ save your work."
     
     echo "🍺🍺🍺 Congratulations!!!! 🍺🍺🍺"
     
